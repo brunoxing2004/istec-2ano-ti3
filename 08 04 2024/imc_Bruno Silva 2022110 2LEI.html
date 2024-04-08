@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exercicio</title>
+</head>
+<body>
+
+<form>
+    Peso:<input type="number" id="peso"><br>
+    Altura:<input type="number" id="altura"><br>
+    <input type="radio" class="radioGenero" id="opcaoMasculino" name="opcaoGenero" value="M">Masculino<br>
+    <input type="radio" class="radioGenero" id="opcaoFeminino" name="opcaoGenero" value="F">Feminino<br>
+    <input type="button" id="calcularButton" value="Calcular">
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function calcularIMC(){
+        var peso = parseFloat($("#peso").val());
+        var altura = parseFloat($("#altura").val());
+        var statusForm = true;
+
+        if($('.radioGenero').is(':checked') == false){
+            window.alert("Indique o género");
+            statusForm = false;
+        }
+
+        if (peso >= 1 && peso <= 300 && altura > 0 && altura < 3 && statusForm === true) {
+            var imcValor = peso / (altura * altura);
+            window.alert("IMC: " + imcValor);
+        } else {
+            window.alert("Verifique valores");
+        }
+    }
+
+    $(document).ready(function(){
+        $("#calcularButton").click(function(){
+            calcularIMC();
+        });
+    });
+</script>
+
+</body>
+</html>
